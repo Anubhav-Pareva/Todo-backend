@@ -15,9 +15,9 @@ export const signupModel = async (userName, userEmail, userPNumber, userPassword
                     return null
                 }
 }
-export const loginModel = async (userEmail, userPassword) => {
+export const loginModel = async (userEmail) => {
     try{
-        const result = await UserModel.findOne({ email: userEmail, password: userPassword });
+        const result = await UserModel.findOne({ email: userEmail });
         if(result){
             return result
         }
