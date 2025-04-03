@@ -24,8 +24,7 @@ export const signupController = async (req, res) => {
     res.status(500).json({success:false, message:"user not created"})                    
 }
 export const loginController = async (req, res) => {
-    const { userEmail, userPassword } = req.body;
-    
+    const { userEmail, userPassword } = req.body
         const result = await loginModel(userEmail);
         if (result) {
             const isMatch = await compareHashPassword(userPassword, result.password);

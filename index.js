@@ -8,7 +8,7 @@ import { loggedAuth } from "./middlewares/loggedAuth.middleware.js";
 import cookieParser from "cookie-parser";
 const server = express();
 const corsOption = {
-    origin: '*', // Change this to your frontend URL
+    origin: 'http://localhost:3000', // Change this to your frontend URL
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
