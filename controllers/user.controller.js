@@ -36,7 +36,7 @@ export const loginController = async (req, res) => {
                                 res.cookie('token', token, {
                                                                     maxAge: 60 * 60 * 1000, // 1 hour
                                                                     httpOnly: true, // Prevents client-side JavaScript access
-                                                                    sameSite: 'Strict' // Helps with CSRF protection
+                                                                    sameSite: 'None' // Helps with CSRF protection
                                                                 }); 
                                 const userData = result.toObject();
                                 delete userData.password;

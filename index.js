@@ -10,9 +10,6 @@ const server = express();
 const corsOption = {
     origin: 'http://localhost:3000', // Change this to your frontend URL
     credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    optionsSuccessStatus: 200
 }
 connectDB();
 server.use(cors(corsOption));
