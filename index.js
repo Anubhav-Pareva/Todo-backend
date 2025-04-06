@@ -8,7 +8,7 @@ import { loggedAuth } from "./middlewares/loggedAuth.middleware.js";
 import cookieParser from "cookie-parser";
 const server = express();
 const corsOption = {
-    origin: 'http://localhost:3000', // Change this to your frontend URL
+    origin: ['https://todo-frontend-six-omega.vercel.app','http://localhost:3000'],
     credentials: true,
 }
 connectDB();
