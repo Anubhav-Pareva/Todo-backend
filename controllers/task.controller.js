@@ -10,12 +10,14 @@ export const createTaskController = async (req, res) =>{
     res.status(200).json({success:false, taskCreated:false});
 }
 export const getAllTaskController = async (req, res) => {
+    const page = req.query.page || 1;
+    const limit = req.query.limit || 5;
     const userId = req.userId;
-    const result = await getAllTaskModel(userId);
-    if(!result){
+    const result = await getAllTaskModel(userId, page, limit);
+    if(!result.result){
         res.status(200).json({success:false, result:"no task found"});
     }
-    res.status(200).json({success:true, result:result});
+    res.status(200).json({success:true, result:result.result, total:result.total});
 }
 export const getTaskController = async (req, res) => {
     

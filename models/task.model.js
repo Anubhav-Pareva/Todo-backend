@@ -15,10 +15,12 @@ export const createTaskModel = async (task, userId) => {
     }
 
 }
-export const getAllTaskModel = async (userId) => {
+export const getAllTaskModel = async (userId, page, limit) => {
     try{
-        const result = await TaskModel.find({userId:userId}).sort({"createdAt":-1}).exec();
-        return result;
+        const skip = ((page - 1) * limit);
+        const result = await TaskModel.find({userId:userId}).sort({"createdAt":-1}).skip(skip).limit(limit).exec();
+        const total = await TaskModel.countDocuments({userId:userId});
+        return {result, total};
     }catch(err){
         console.log(err);        
         return false;
