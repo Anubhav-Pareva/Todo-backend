@@ -42,7 +42,7 @@ export const loginController = async (req, res) => {
                                 const userData = result.toObject();
                                 delete userData.password;
                                 await sendLoginMail(userData.email);
-                                return res.status(200).json({ success: true, userFound: true, user: userData, message:"user logined successfully" });
+                                return res.status(200).json({ success: true, userFound: true, user: userData, token:token, message:"user logined successfully" });
                     }
                     else{
                         return res.status(200).json({success:true, userFound:false, message:"password is not correct"});
