@@ -55,12 +55,14 @@ export const loginController = async (req, res) => {
         res.status(500).json({ success: false, error: err.message })
 }
 export const logoutController = (req, res) => {
-                if(req?.cookies?.token){
+                try{
+                    if(req?.cookies?.token){
                     res.clearCookie('token');
+                    }
                     res.status(200).json({success:true, userStatus:'logout', message:"user logout successfully"});
                 }
-                else{
-                    res.status(404).json({success:false, userStatus:'not logged in'});
+                catch(err){
+                    res.status(404).json({success:false, userStatus:'not logged in', error:err});
                 }
 }
 export const userAuthController = (req, res) => {
